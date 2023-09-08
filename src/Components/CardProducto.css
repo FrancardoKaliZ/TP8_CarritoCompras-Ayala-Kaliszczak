@@ -1,0 +1,19 @@
+.CardProductos {
+    color: white;
+    background-color: rgb(0, 0, 170) !important;
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    margin-top: 10%;
+}
+.imgCardProductos{
+    height: 25vh;
+}
+.cardDescripcion{
+    height: 17vh;
+}
+.detalle{
+    text-align: center;
+    justify-content: center;
+    margin-left: 36%;
+}

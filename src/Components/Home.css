@@ -1,0 +1,76 @@
+body {
+  background-image: url("https://images.saymedia-content.com/.image/t_share/MTkzOTUzODU0MDkyODEzODI5/particlesjs-examples.gif") !important;
+}
+
+.rainbow-text {
+  text-align: center;
+  font-size: 32px;
+  font-family: sans-serif;
+  letter-spacing: 5px;
+  animation: colorRotate 2s linear 0s infinite;
+  transition: text-shadow 0.1s;
+}
+
+.rainbow-text:hover {
+  text-shadow: 0.04em 0.04em #fc0049,
+    0.08em 0.08em #fe8f01,
+    0.12em 0.12em #fdf21f,
+    0.16em 0.16em #3fdf4b,
+    0.2em 0.2em #3462fe,
+    0 0 5px #f40303,
+    0 0 25px #3703f4,
+    0 0 50px #1ff403,
+    0 0 100px #03e9f4;
+}
+
+@keyframes colorRotate {
+
+  100%,
+  0% {
+    color: rgb(255, 0, 0);
+  }
+
+  8% {
+    color: rgb(255, 127, 0);
+  }
+
+  16% {
+    color: rgb(255, 255, 0);
+  }
+
+  25% {
+    color: rgb(127, 255, 0);
+  }
+
+  33% {
+    color: rgb(0, 255, 0);
+  }
+
+  41% {
+    color: rgb(0, 255, 127);
+  }
+
+  50% {
+    color: rgb(0, 255, 255);
+  }
+
+  58% {
+    color: rgb(0, 127, 255);
+  }
+
+  66% {
+    color: rgb(0, 0, 255);
+  }
+
+  75% {
+    color: rgb(127, 0, 255);
+  }
+
+  83% {
+    color: rgb(255, 0, 255);
+  }
+
+  91% {
+    color: rgb(255, 0, 127);
+  }
+}

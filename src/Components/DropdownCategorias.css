@@ -1,0 +1,18 @@
+
+.menu{
+    background-color: navy;
+}
+
+.item{
+    background-color: transparent !important;
+}
+.item:hover{
+    color: white;
+    background-color: rgb(4, 62, 185) !important;
+}
+
+.toggle{
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+}
