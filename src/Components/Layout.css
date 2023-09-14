@@ -5,13 +5,14 @@
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
 }
 .carritoLayout {
-
     margin-left: 68%;
     -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
 }
 .imgCart{
+    
+    padding: 3px;
     height: 4vh;
     width: 7vh;
 }

@@ -1,5 +1,5 @@
 import React from "react";
 
-const carrito = React.createContext("");
+const carritoContext = React.createContext([]);
 
-export default carrito;
+export default carritoContext;

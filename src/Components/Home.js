@@ -12,6 +12,7 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+      setLoading(true);
     axios.get("https://dummyjson.com/products?limit=100&").then((res) => {
       setProductos(res.data.products);
       setLoading(false);

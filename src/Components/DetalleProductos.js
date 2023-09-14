@@ -1,7 +1,7 @@
 import axios from "axios";
 import "./DetalleProductos.css";
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Carousel from "react-bootstrap/Carousel";
@@ -9,12 +9,13 @@ import Button from "react-bootstrap/esm/Button";
 import LoadingSpinner from './Spinner';
 import { Rating } from 'primereact/rating';
 import { Link } from "react-router-dom";
-
+import carritoContext from '../Context/Context.js'; 
 
 const DetalleProductos = () => {
   const [loading, setLoading] = useState(true);
   const { productoId } = useParams();
   const [producto, setProducto] = useState([]);
+  const context = useContext(carritoContext);
 
   useEffect(() => {
     axios
@@ -25,6 +26,11 @@ const DetalleProductos = () => {
       })
       .catch((err) => console.log(err));
   }, []);
+
+  const handleClick = () => {
+    context.setCarrito([...context.carrito,producto]);
+
+  }
 
   return loading ? (
     <LoadingSpinner />
@@ -48,7 +54,7 @@ const DetalleProductos = () => {
       </Row>
       <div>
         <Row style={{marginTop:'5px'}}><p>categoria del producto: <Link to={`/detalle-categoria/${producto.category}`} className='item'><b>{producto.category}</b></Link></p></Row>
-        <Row><Col style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'fixed', bottom: '20%' }} sm={8}><Button variant="primary">Comprar</Button></Col></Row>
+        <Row><Col style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'fixed', bottom: '20%' }} sm={8}><Button variant="primary" onClick={()=> handleClick()}>Agregar al Carrito</Button></Col></Row>
         <Row><Col style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'fixed', bottom: '18%' }} sm={8}>Quedan: <b> {producto.stock}</b></Col></Row>
       </div>
     </div>
