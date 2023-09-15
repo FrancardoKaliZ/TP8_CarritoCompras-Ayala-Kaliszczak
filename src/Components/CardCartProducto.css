@@ -15,3 +15,8 @@
 .cardDescripcion{
     height: 18vh;
 }
+.imgCross{
+    float: right;
+    height: 5vh;
+    width: auto;
+}

@@ -7,13 +7,13 @@ import DetalleProductos from './Components/DetalleProductos';
 import Contacto from './Components/Contacto';
 import DetalleCategoria from './Components/detalleCategoria';
 import Cart from './Components/Cart';
-import carritoContext from './Context/Context.js';
+import carritoContext from './context/Context';
 import { useState } from 'react';
 
 const App = () => {
-  const [carrito, setCarrito] = useState([]);
+  const [carrito, setCarritoContext] = useState([]);
   return (
-  <carritoContext.Provider value = {{carrito,setCarrito}}>
+  <carritoContext.Provider value = {{carrito,setCarritoContext}}>
     <BrowserRouter>
     <Routes>
       <Route path='/' element={<Layout />}>

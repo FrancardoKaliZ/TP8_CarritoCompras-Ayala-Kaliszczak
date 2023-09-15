@@ -9,7 +9,7 @@ import Button from "react-bootstrap/esm/Button";
 import LoadingSpinner from './Spinner';
 import { Rating } from 'primereact/rating';
 import { Link } from "react-router-dom";
-import carritoContext from '../Context/Context.js'; 
+import carritoContext from '../context/Context'; 
 
 const DetalleProductos = () => {
   const [loading, setLoading] = useState(true);
@@ -28,7 +28,7 @@ const DetalleProductos = () => {
   }, []);
 
   const handleClick = () => {
-    context.setCarrito([...context.carrito,producto]);
+    context.setCarritoContext([...context.carrito,{producto: producto , cantidad: 1}]);
 
   }
 

@@ -1,25 +1,30 @@
 import './CardCartProducto.css';
-import { Card } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { Row, Col } from 'react-bootstrap';
 import closeCross from '../close_cross.png';
+import {object , func} from 'prop-types';
 
 const CardCartProducto = (props) => {
-    console.log("props:", props);
     return (
         <Card className='cardProducto'>
             <Card.Body>
-                <Card.Title><Row><Col>{props.product.title}</Col><Col><img src={closeCross}/></Col></Row></Card.Title>
+                <Card.Title><Row><Col>{props.element.producto.title}</Col><Col><img src={closeCross} className="imgCross" onClick={() => props.eliminarProducto(props.element.producto.id) }/></Col></Row></Card.Title>
                 <Card.Text className='cardDescripcion'>
                     <Row><Col sm='auto'>
-                        <Card.Img className='imgCardProductos' src={props.product.thumbnail}></Card.Img></Col>
+                        <Card.Img className='imgCardProductos' src={props.element.producto.thumbnail}></Card.Img></Col>
                         <Col>
-                            {props.product.description} <br />
-                            Precio: ${props.product.price} <br /> {props.product.discountPercentage}% OFF  <br /> {props.product.rating}⭐
+                            {props.element.producto.description} <br />
+                            Precio: ${props.element.producto.price} <br /> {props.element.producto.discountPercentage}% OFF  <br /> {props.element.producto.rating}⭐
                         </Col></Row>
                 </Card.Text>
+                <Card.Footer><Col>Cantidad: {props.element.cantidad}</Col><Col><Button >-</Button><Button>+</Button></Col></Card.Footer>
             </Card.Body>
         </Card>
     )
+}
+CardCartProducto.propTypes = {
+    product: object,
+    eliminarProducto: func
 }
 export default CardCartProducto;

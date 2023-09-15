@@ -2,3 +2,20 @@
     padding-left: 20%;
     padding-right: 20%;
 }
+.buttonLimpiar{
+    margin-top: 2%;
+    float: right;
+}
+.pTotal{
+    margin-top: 3%;
+}
+.footer{
+    position: relative;
+}
+.pVacio{
+    position: absolute;
+  top: 40%;
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+}
