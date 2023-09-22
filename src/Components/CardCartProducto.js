@@ -18,13 +18,14 @@ const CardCartProducto = (props) => {
                             Precio: ${props.element.producto.price} <br /> {props.element.producto.discountPercentage}% OFF  <br /> {props.element.producto.rating}⭐
                         </Col></Row>
                 </Card.Text>
-                <Card.Footer><Col>Cantidad: {props.element.cantidad}</Col><Col><Button >-</Button><Button>+</Button></Col></Card.Footer>
+                <Card.Footer><Col>Cantidad: {props.element.cantidad}</Col><Col><Button onClick={() => props.sumarValor(-1,props.element.producto.id)}>-</Button><Button onClick={()=> props.sumarValor(1,props.element.producto.id)}>+</Button></Col></Card.Footer>
             </Card.Body>
         </Card>
     )
 }
 CardCartProducto.propTypes = {
     product: object,
-    eliminarProducto: func
+    eliminarProducto: func,
+    sumarValor: func
 }
 export default CardCartProducto;
