@@ -32,15 +32,13 @@ const Carrito = () => {
     }, [carrito])
 
     const eliminarProducto = (id) => {
+        console.log("eliminar producto id",id);
         setCarrito((current) =>
-            current.filter((producto) => producto.id = !id))
+            current.filter((producto) => producto.producto.id !== id));
         context.setCarritoContext(carrito);
     }
 
     const sumarValor = (value,id) => {
-        
-        console.log("ASDASD : " , carrito)
-        console.log("id :", id)
         
         const nuevoCarrito = context.carrito.map(e => {
             if (e.producto.id === id) {
@@ -58,6 +56,8 @@ const Carrito = () => {
         setCarrito([...nuevoCarrito.filter((element) => element.cantidad !== 0)])
         context.setCarritoContext(carrito);
     }
+
+
     return vacio ? (
         <div className='pVacio'>
             <h3><b>El carrito está vacio</b></h3></div>
@@ -66,7 +66,7 @@ const Carrito = () => {
             <Row><Col><Button variant='secondary' className='buttonLimpiar' onClick={() => setCarrito(initialState)}>Limpiar</Button></Col></Row>
             <Row>{ carrito.map(element => <CardCartProducto element={element} eliminarProducto={eliminarProducto} sumarValor={sumarValor}></CardCartProducto>)}</Row>
             <Row>
-                <Col><p className='pTotal'>Monto Total: $ {precioTotal} </p></Col> <Col><Button className='buttonLimpiar'>Comprar</Button></Col>
+                <Col><p className='pTotal'>Monto Total: $ {precioTotal} </p></Col> <Col><Button className='buttonLimpiar' onClick={()=> alert("Compra finalizada, gracias por contar con nosotros!")}>Finalizar Compra</Button></Col>
             </Row>
         </Col>
     )

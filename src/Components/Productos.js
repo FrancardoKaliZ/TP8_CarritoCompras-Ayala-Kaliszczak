@@ -47,11 +47,11 @@ const Productos = () => {
                 <Col sm={2}><SearchBar></SearchBar></Col>
             </Row>
             <Row >
-                {listProducts.map(product => <Col sm={2}><CardProducto product={product}></CardProducto></Col>)}
+                {listProducts.map(product => <Col sm={2} key={product.id}><CardProducto product={product}></CardProducto></Col>)}
             </Row>
             <Row className="justify-content-md-center" style={{ marginTop: '1%' }}>
                 <Col lg="auto">
-                    <div class="pagination">
+                    <div className="pagination">
                         {skipMostrados - 10 >= 0 ? <Button onClick={() => paginationAuto(-10)} >&laquo;</Button> : <Button disabled={true} >&laquo;</Button>}
                         {skipMostrados !== 0 ? <Button href="#" onClick={() => paginationManual(0)}>1</Button> : <Button href="#" disabled={true}>1</Button>}
                         {skipMostrados !== 10 ? <Button href="#" onClick={() => paginationManual(10)}>2</Button> : <Button href="#" disabled={true}>2</Button>}

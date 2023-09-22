@@ -16,5 +16,11 @@
 .detalle{
     text-align: center;
     justify-content: center;
-    margin-left: 36%;
+    margin-left: 35%;
+}
+
+.imgCheck{
+    float: right;
+    height: 3vh;
+    width: auto;
 }

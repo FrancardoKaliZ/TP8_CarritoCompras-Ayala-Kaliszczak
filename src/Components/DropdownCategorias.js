@@ -21,7 +21,7 @@ const DropdownCategorias = (props) => {
 
     <Dropdown.Menu className='menu'>
     {categorias.map(categoria=>
-    <Dropdown.Item className='item'>
+    <Dropdown.Item className='item' key={categoria}>
     <Link to={`/detalle-categoria/${categoria}`} className='item'>{categoria}</Link>
     </Dropdown.Item>
       )}
