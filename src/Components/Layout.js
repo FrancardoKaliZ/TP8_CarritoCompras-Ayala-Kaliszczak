@@ -9,7 +9,7 @@ const Layout = () =>{
             <Link to='/' className='title'>Mercado Mercantil</Link>
             <Link to='/productos' className='anchorLayout'>productos</Link>
             <Link to='/quienes-somos' className='anchorLayout'>Contáctanos</Link>
-            <Link to='/carrito' className='carritoLayout'> <img src={cartImg} className='imgCart'></img></Link>
+            <Link to='/carrito' className='carritoLayout'> <img src={cartImg} className='imgCart' alt=''></img></Link>
         </nav>
         <Outlet/>
         </>

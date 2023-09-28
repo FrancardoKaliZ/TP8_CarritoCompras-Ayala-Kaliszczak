@@ -35,7 +35,7 @@ const CardProducto = (props) => {
           ⭐
         </Card.Text>
         <Card.Footer className="footer">
-          {enCarrito ? <img className="imgCheck" src={green_check}/> : <></>}
+          {enCarrito ? <img className="imgCheck" alt='' src={green_check} /> : <></>}
           <Link
             className="detalle"
             to={`/detalle-producto/${props.product.id}`}

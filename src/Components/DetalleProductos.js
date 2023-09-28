@@ -17,7 +17,12 @@ const DetalleProductos = () => {
   const [producto, setProducto] = useState([]);
   const context = useContext(carritoContext);
   const {state} = useLocation();
-  const enCarrito = state;
+  
+  //const enCarrito = state;
+
+  const [enCarrito,setEnCarrito] = useState('');
+
+  const [recargar,setRecargar] = useState(false);
 
   useEffect(() => {
     axios
@@ -27,11 +32,17 @@ const DetalleProductos = () => {
         setLoading(false);
       })
       .catch((err) => console.log(err));
+      setEnCarrito(state);
   }, []);
+
+  useEffect(()=> {
+    setRecargar(false);
+  },[recargar])
 
   const handleClick = () => {
     context.setCarritoContext([...context.carrito,{producto: producto , cantidad: 1}]);
-
+    setEnCarrito(true);
+    setRecargar(true);
   }
 
   return loading ? (
@@ -40,9 +51,9 @@ const DetalleProductos = () => {
     <div className="info-producto">
       <Row style={{ display: 'flex', justifyContent: 'left', }}>
         <Col sm='auto'>
-          <Carousel pauseOnHover={true}>  
+          <Carousel>  
             {producto.images.map(im =>
-              <Carousel.Item className="slide">
+              <Carousel.Item className="slide" key={im}>
                 <img className='img-responsive center-block'  src={im} alt="" id="imgProducto"></img>
               </Carousel.Item>
             )}

@@ -13,7 +13,6 @@ const Carrito = () => {
     useEffect(() => {
         setVacio(true);
         setCarrito(context.carrito);
-        console.log("carrito: ",context.carrito);
     }, [])
 
     useEffect(() => {
@@ -32,7 +31,6 @@ const Carrito = () => {
     }, [carrito])
 
     const eliminarProducto = (id) => {
-        console.log("eliminar producto id",id);
         setCarrito((current) =>
             current.filter((producto) => producto.producto.id !== id));
         context.setCarritoContext(carrito);
