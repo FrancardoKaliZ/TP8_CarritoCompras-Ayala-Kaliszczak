@@ -9,7 +9,7 @@ const CardProducto = (props) => {
   const [enCarrito,setEnCarrito] = useState();
   useEffect(() => {
     let result = '';
-    result = context.carrito.filter(checkCart);
+    if(context.carrito) result = context.carrito.filter(checkCart);
     result.length > 0 ? result[0].cantidad > 0 ? setEnCarrito(true) : setEnCarrito(false) : <></>;
   }, []);
   const checkCart = (producto) => {

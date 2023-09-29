@@ -12,6 +12,7 @@ const Carrito = () => {
     const context = useContext(carritoContext);
     useEffect(() => {
         setVacio(true);
+        console.log(context.carrito)
         setCarrito(context.carrito);
     }, [])
 
@@ -28,12 +29,14 @@ const Carrito = () => {
             setPrecioTotal(total);
         }
         context.setCarritoContext(carrito);
-    }, [carrito])
+        if(carrito[0] !== undefined) localStorage.setItem("carritoKey",JSON.stringify(carrito));
+    }, [carrito]);
 
     const eliminarProducto = (id) => {
         setCarrito((current) =>
             current.filter((producto) => producto.producto.id !== id));
         context.setCarritoContext(carrito);
+        if(carrito[0] !== undefined) localStorage.setItem("carritoKey",JSON.stringify(carrito));
     }
 
     const sumarValor = (value,id) => {
@@ -53,6 +56,7 @@ const Carrito = () => {
 
         setCarrito([...nuevoCarrito.filter((element) => element.cantidad !== 0)])
         context.setCarritoContext(carrito);
+        if(carrito[0] !== undefined) localStorage.setItem("carritoKey",JSON.stringify(carrito));
     }
 
 

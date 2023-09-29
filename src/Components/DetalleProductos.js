@@ -17,9 +17,6 @@ const DetalleProductos = () => {
   const [producto, setProducto] = useState([]);
   const context = useContext(carritoContext);
   const {state} = useLocation();
-  
-  //const enCarrito = state;
-
   const [enCarrito,setEnCarrito] = useState('');
 
   const [recargar,setRecargar] = useState(false);
@@ -36,6 +33,8 @@ const DetalleProductos = () => {
   }, []);
 
   useEffect(()=> {
+    console.log(context.carrito);
+    if(context.carrito[0] !== undefined) localStorage.setItem("carritoKey",JSON.stringify(context.carrito));
     setRecargar(false);
   },[recargar])
 
