@@ -12,7 +12,6 @@ const Carrito = () => {
     const context = useContext(carritoContext);
     useEffect(() => {
         setVacio(true);
-        console.log(context.carrito)
         setCarrito(context.carrito);
     }, [])
 
@@ -24,30 +23,32 @@ const Carrito = () => {
         else {
             setVacio(false)
             carrito.forEach(element => {
-                total = total + element.producto.price*element.cantidad;
+                total = total + element.producto.price * element.cantidad;
             });
             setPrecioTotal(total);
         }
         context.setCarritoContext(carrito);
-        if(carrito[0] !== undefined) localStorage.setItem("carritoKey",JSON.stringify(carrito));
+        localStorage.setItem("carritoKey", JSON.stringify(carrito));
+        console.log("actualizo la key");
     }, [carrito]);
 
     const eliminarProducto = (id) => {
+        console.log("id eliminarProducto", id)
         setCarrito((current) =>
             current.filter((producto) => producto.producto.id !== id));
         context.setCarritoContext(carrito);
-        if(carrito[0] !== undefined) localStorage.setItem("carritoKey",JSON.stringify(carrito));
+        console.log("carrito eliminarProducto", carrito)
     }
 
-    const sumarValor = (value,id) => {
-        
+    const sumarValor = (value, id) => {
+
         const nuevoCarrito = context.carrito.map(e => {
             if (e.producto.id === id) {
                 if (e.cantidad === 0) {
-                    eliminarProducto(e.producto.id)
+                    eliminarProducto(e.producto.id);
                 }
-                else{
-                    e.cantidad += value;    
+                else {
+                    e.cantidad += value;
                 }
             }
 
@@ -56,7 +57,6 @@ const Carrito = () => {
 
         setCarrito([...nuevoCarrito.filter((element) => element.cantidad !== 0)])
         context.setCarritoContext(carrito);
-        if(carrito[0] !== undefined) localStorage.setItem("carritoKey",JSON.stringify(carrito));
     }
 
 
@@ -66,9 +66,9 @@ const Carrito = () => {
     ) : (
         <Col className='body'>
             <Row><Col><Button variant='secondary' className='buttonLimpiar' onClick={() => setCarrito(initialState)}>Limpiar</Button></Col></Row>
-            <Row>{ carrito.map(element => <CardCartProducto element={element} eliminarProducto={eliminarProducto} sumarValor={sumarValor}></CardCartProducto>)}</Row>
+            <Row>{carrito.map(element => <CardCartProducto element={element} eliminarProducto={eliminarProducto} sumarValor={sumarValor} key={element.producto.id}></CardCartProducto>)}</Row>
             <Row>
-                <Col><p className='pTotal'>Monto Total: $ {precioTotal} </p></Col> <Col><Button className='buttonLimpiar' onClick={()=> alert("Compra finalizada, gracias por contar con nosotros!")}>Finalizar Compra</Button></Col>
+                <Col><p className='pTotal'>Monto Total: $ {precioTotal} </p></Col> <Col><Button className='buttonLimpiar' onClick={() => alert("Compra finalizada, gracias por contar con nosotros!")}>Finalizar Compra</Button></Col>
             </Row>
         </Col>
     )

@@ -13,10 +13,13 @@ import { useEffect, useState } from 'react';
 const App = () => {
   const [carrito, setCarritoContext] = useState([]);
   useEffect(() => {
+    if(localStorage.getItem("carritoKey") === "undefined")
+      localStorage.setItem("carritoKey",JSON.stringify([]));
     const carritoJSON = JSON.parse(localStorage.getItem("carritoKey"));
-    if (carritoJSON[0] !== undefined) {
+    if (carritoJSON === [] || carritoJSON[0] !== undefined) {
       console.log("entre al if.......")
-      setCarritoContext(carritoJSON)}
+      setCarritoContext(carritoJSON);
+    }
     ;
   }, [])
   return (
